@@ -2,7 +2,6 @@ import scipy
 import numpy as np
 from Fundamental.Hamiltonian import H0
 from Fundamental.NonHermitian_Hamiltonian import NonHermitian_Hamiltonian as nhh
-from Check.Orthogonality_Check import biorthogonality_matrix
 
 def small_chaos(chaos_order, num_sites):
     chaos = np.array([])
