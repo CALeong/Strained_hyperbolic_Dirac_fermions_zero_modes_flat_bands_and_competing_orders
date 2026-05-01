@@ -1,0 +1,14 @@
+These run script templates are dedicated to code for generating the Hamiltonian for a {p, 3} hyperbolic lattice
+with external uniform axial magnetic field (parameterized by qaxial, see below) and obtaining the DOS of the Hamiltonian
+from utilization of the kernel polynomial method (KPM).
+
+General conventions:
+pval is p in {p, 3} appearing in the Schlafli symbol for hyperbolic lattices (q always assumed to be =3)
+nval is the number of generations (unlike in the paper, in the code we start counting from 1 not 0)
+qaxial parameterizes the strength of the uniform axial magnetic field
+Nm is the number of moments to compute in the Chebyshev polynomial expansion in KPM
+
+Note that since KPM requires rescaling of the Hamiltonian, bounds of the eigenspectrum must be given.
+Exact bounds could be computed via Lanczos algorithm, however it is more efficient to statically set these
+bounds here to some static value. For zero axial field [-3.12, 3.12] will work fine. For nonzero
+magnitudes of the axial field (qaxial), a larger window may be needed due to band broadening.
