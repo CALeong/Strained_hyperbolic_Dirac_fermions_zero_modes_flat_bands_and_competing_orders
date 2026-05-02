@@ -1,0 +1,21 @@
+These run script templates are dedicated to code for running the SCHF calculation associated with
+the mean-field description of the NN Coulomb repulsion, resulting in a CDW order.
+
+General conventions:
+pval is the {p, 3} appearing in the Schlafli symbol for hyperbolic lattices (q assumed to be = 3)
+nval is the number of generations (unlike paper in code we start counting from 1 not 0)
+alpha_NH is the alpha appearing in the NH construction, controlling the strength of the NH
+small_disorder_strength is the small disorder added to stabilize the NH eigensolver
+coulomb_V is the V parameter which controls the strength of the NN Coulomb repulsion
+qaxial is the parameter that controls the strength of the axial magnetic field
+(note that to match qaxial values quoted in paper, you must enter the sqrt of that value in the code for qaxial
+for instance if in the paper we say q=0.0016, in the code you need to use qaxial=0.04)
+
+symmetrize is boolean option for hyperbolic SCHF computation on if symmetrization of the MFT interaction term
+should be performed during SCHF computation.
+From comparison, symmetrize=False and symmetrize=True seem to give the same result.
+
+system_data is the system averaged CDW order parameter results for each V calculated for.
+raw_data is the delta values on each site for each V value calculated for.
+the format of raw_data is a 2D array with the first column being the V value associated with each row.
+
