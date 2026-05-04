@@ -1,0 +1,36 @@
+These run script templates are dedicated to code for running the SCHF calculation associated with
+the mean-field description of the NNN Coulomb repulsion, resulting in a Haldane order.
+
+General conventions:
+pval is the {p, 3} appearing in the Schlafli symbol for hyperbolic lattices (q assumed to be = 3)
+nval is the number of generations (unlike paper in code we start counting from 1 not 0)
+alpha_NH is the alpha appearing in the NH construction, controlling the strength of the NH
+small_disorder_strength is the small disorder added to stabilize the NH eigensolver
+coulomb_V2 is the V2 parameter which controls the strength of the NNN Coulomb repulsion
+qaxial is the parameter that controls the strength of the axial magnetic field
+(note that to match qaxial values quoted in paper, you must enter the sqrt of that value in the code for qaxial
+for instance if in the paper we say q=0.0016, in the code you need to use qaxial=0.04)
+
+schf_tolerance is the tolerance amount before SCHF computation deems the simulation as converged
+*Note for the convergence of the SCHF computation the tolerance value (currently set to 0.001 in the script)
+will likely need to be loosened*
+
+final_delta_HO is the final Haldane order, order parameter (\delta_{\rm HO})
+
+eta_values returned from SCHF calculation is a dictionary with keys 'V2={}'. For a given V2 value the data sturcture
+is a 3xN array where the 0th and 1st rows correspond to the row and column index of the 2nd row eta value.
+
+total_mag_flux describes the total magnetic flux through the system for each iteration fo the SCHF computation.
+To check that total magnetic flux is zero after averaging between both directions of the axial field,
+get total_mag_flux from both configurations and add them.
+
+max_real_comp is the maximum real component of the eta values during each iteration of the SCHF computation. While we
+delete any real component of eta before forming the MFT interaction term for the next iteration, we check that the
+real component is not becoming too large over the course of the simulation in order to justify throwing it out
+
+smallest_real_ev is the minimum real component of the eigenvalues for each iteration
+imag_ev_bounds is the extremal magnitudes of the imaginary component of the eigenvalues for each iteration
+Can take ratio of min_real_comp_ev to imag_ev_bounds to check that imaginary component stays sufficiently small
+
+Examples of the above checks are shown in the run templates
+
